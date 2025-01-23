@@ -1,0 +1,150 @@
+.hero {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 35px;
+    text-align: center;
+    margin-top: 150px; 
+}
+
+.hero img {
+    width: 300px;
+    height: auto;
+}
+
+.hero h1 {
+    width: 70%;
+    font-size: 90px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    background: linear-gradient(290deg, #DF8908 10%, #B415FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    width: 70%;
+    font-size: 25px;
+    line-height: 32px;
+}
+
+.hero-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    gap: 25px;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+.hero-connect,
+.hero-resume {
+    padding: 25px 45px;
+    border-radius: 50px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.hero-connect {
+    background: linear-gradient(264deg, #DF9908 -5.09%, #B415FF 106.28%);
+}
+
+.hero-resume {
+    border: 2px solid #fff;
+}
+
+.hero-resume a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hero-connect:hover {
+    border: 2px solid white;
+}
+
+.hero-resume:hover {
+    border-color: #B415FF;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero {
+        margin-top: 80px;
+    }
+
+    .hero img {
+        width: 250px; 
+        margin-bottom: 20px;
+    }
+
+    .hero h1 {
+        width: 90%;
+        font-size: 50px;
+        margin-top: 30px;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        width: 80%;
+        font-size: 18px;
+        line-height: 28px;
+        margin: 10px 0px;
+    }
+
+    .hero-action {
+        gap: 16px;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 50px;
+    }
+
+    .hero-connect,
+    .hero-resume {
+        padding: 20px 30px;
+        border-radius: 40px;
+    }
+
+    .hero-connect:hover,
+    .hero-resume:hover {
+        transform: scale(1.05);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero img {
+        width: 200px; 
+    }
+
+    .hero h1 {
+        width: 90%;
+        font-size: 40px;
+    }
+
+    .hero p {
+        width: 90%;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .hero-action {
+        gap: 12px;
+        font-size: 16px;
+    }
+
+    .hero-connect,
+    .hero-resume {
+        padding: 18px 25px;
+        border-radius: 35px;
+    }
+
+    .hero-connect:hover,
+    .hero-resume:hover {
+        transform: scale(1.05);
+    }
+}

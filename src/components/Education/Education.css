@@ -1,0 +1,73 @@
+.education {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  margin: 80px 170px;
+}
+
+.education-title {
+  position: relative;
+}
+
+.education-title h1 {
+  padding: 0px 30px;
+  font-size: 80px;
+  font-weight: 600;
+}
+
+.education-title img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.education-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+  max-width: 1200px;
+}
+
+.education-card {
+  flex: 1 1 calc(33.33% - 20px);
+  background: #32323c;
+  padding: 20px;
+  border-radius: 10px;
+  color: #D8D8D8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+  min-width: 300px;
+}
+
+.education-card:hover {
+  transform: scale(1.05);
+}
+
+.education-card h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #DF8908;
+}
+
+.education-card p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+  .education-card {
+      flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .education-card {
+      flex: 1 1 100%;
+  }
+}
