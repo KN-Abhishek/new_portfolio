@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 .about {
   display: flex;
   flex-direction: column;
@@ -7,29 +8,26 @@
   margin: 80px 170px;
   text-align: center;
 }
-
 .about-title {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff; 
+  font-size: 40px;
+  font-weight: 100;
+  font-family: 'Abril Fatface', serif; 
+  font-size: 3.5rem;
+  color: #ffffff; 
 }
 
-.about-title h1 {
-  padding: 0px 30px;
-  font-size: 80px;
-  font-weight: 600;
-}
-
-.about-title img {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
-}
 
 .about-section {
   display: flex;
-  gap: 80px;
+  gap: 50px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   flex-wrap: wrap; 
 }
@@ -38,14 +36,15 @@
   border-radius: 50%; 
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
   width: 250px; 
-  height: 250px;
+  height: 250px; 
+  object-fit: cover; 
 }
 
 .about-right {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  width: 100%;
+  flex: 1; 
 }
 
 .about-para {
@@ -87,18 +86,13 @@
 .about-achievements {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  flex-wrap: wrap;
   font-size: 24px;
   font-weight: 600;
   margin-top: 20px;
-  flex-wrap: wrap; 
 }
 
-.about-achievements p {
-  margin: 0; 
-  text-align: right; 
-}
-
+.about-achievements p,
 .about-achievements h1 {
   margin: 0;
 }
@@ -111,79 +105,76 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .about {
-      margin: 40px 20px; 
+    margin: 40px 20px;
   }
 
   .about-title h1 {
-      font-size: 50px;
-      width: 90%;
+    font-size: 50px;
+  }
+
+  .about-title img {
+    width: 200px;
   }
 
   .about-left img {
-      width: 200px;
-      height: 200px;
+    width: 200px;
+    height: 200px;
   }
 
   .about-section {
-      gap: 30px;
-      flex-direction: column; 
-      align-items: center;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 30px;
   }
 
   .about-right {
-      gap: 20px;
-      width: 90%;
-      text-align: left;
+    gap: 20px;
+    text-align: center;
   }
 
   .about-para {
-      font-size: 18px;
-      font-weight: 400;
+    font-size: 18px;
   }
 
   .about-skills {
-      gap: 15px;
-  }
-
-  .about-skill p {
-      font-size: 20px;
+    gap: 15px;
   }
 
   .about-achievements {
-      gap: 15px;
-      flex-direction: column;
-      font-size: 18px;
-  }
-
-  .about-skill:hover {
-      transform: none; 
+    gap: 15px;
+    flex-direction: column;
+    text-align: center;
+    font-size: 18px;
   }
 }
 
-/* Extra small screens */
 @media (max-width: 480px) {
   .about-title h1 {
-      font-size: 40px;
+    font-size: 40px;
+  }
+
+  .about-title img {
+    width: 150px;
   }
 
   .about-left img {
-      width: 180px;
-      height: 180px;
+    width: 180px;
+    height: 180px;
   }
 
   .about-para {
-      font-size: 16px;
+    font-size: 16px;
   }
 
   .about-skills {
-      gap: 10px;
+    gap: 10px;
   }
 
   .about-skill p {
-      font-size: 18px;
+    font-size: 18px;
   }
 
   .about-achievements {
-      font-size: 16px;
+    font-size: 16px;
   }
 }

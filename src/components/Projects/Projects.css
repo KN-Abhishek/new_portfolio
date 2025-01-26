@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 .projects {
     display: flex;
     flex-direction: column;
@@ -15,13 +16,9 @@
     padding: 0px 30px;
     font-size: 80px;
     font-weight: 600;
-  }
-  
-  .projects-title img {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
+    font-family: 'Abril Fatface', serif; 
+    font-size: 4.5rem;
+    color: #ffffff; 
   }
   
   .projects-section {
@@ -32,14 +29,22 @@
     max-width: 1200px; 
   }
   .project-card {
-    flex: 1 1 calc(33.33% - 20px); 
-    background: #32323c;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 60px;
     border-radius: 10px;
-    color: #D8D8D8;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s;
-    min-width: 300px; 
+    border: 2px solid white;
+    transition: 0.4s;
+    cursor: pointer;
+  }
+  .project-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 30px; 
   }
   
   .project-card:hover {
@@ -47,10 +52,12 @@
   }
   
   .project-card h2 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #DF8908;
+    background: linear-gradient(290deg, #DF8908 10%, #B415FF 100%);
+    font-size: 30px;
+    font-weight: 700;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
   .project-card p {
@@ -75,7 +82,7 @@
   }
   .projects a {
     text-decoration: none; 
-    color: inherit; /
+    color: inherit; 
   }
   
   .projects a:hover {

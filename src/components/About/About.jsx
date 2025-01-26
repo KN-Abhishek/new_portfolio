@@ -1,14 +1,12 @@
 import React from 'react';
 import './About.css';
-import themepic from '../../assets/theme_pattern.svg';
 import profile_image from '../../assets/Profilepic.png';
 
 const About = () => {
   return (
-    <div className='about'id='about'>
+    <div className='about' id='about'>
       <div className="about-title">
-        <h1>About Me</h1>
-        <img src={themepic} alt="Theme Pattern" />
+        <h1>Who is Abhishek?</h1>
       </div>
       <div className="about-section">
         
@@ -18,8 +16,8 @@ const About = () => {
 
         <div className="about-right">
           <div className="about-para">
-            <p>Hello, I'm Abhishek!</p>
-            <p>I’m a passionate Associate Software Engineer with a background in Electronics and Communication Engineering.</p>
+            <p>I'm a dedicated Electronics and Communication Engineering graduate with a knack for innovation. I've worked on impactful projects involving microcontrollers and multipliers, showcasing my technical acumen and problem-solving abilities. Currently,
+               I’m thriving as an Associate Software Engineer, combining my passion for technology with a drive to create meaningful solutions. Let's connect and build something amazing together!.</p>
           </div>
           <div className="about-skills">
             <div className="about-skill">
@@ -45,7 +43,7 @@ const About = () => {
           </div>
           <div className="about-achievements">
             <h1>FRESHER</h1>
-            <p>6+ PROJECTS COMPLETED</p>
+            <p>5+ PROJECTS COMPLETED</p>
           </div>
         </div>
       </div>
@@ -53,4 +51,4 @@ const About = () => {
   );
 };
 
-export default About; 
+export default About;

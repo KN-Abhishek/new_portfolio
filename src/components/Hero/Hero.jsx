@@ -8,10 +8,12 @@ const Hero = () => {
     <div id="home" className="hero">
       <img src={profile_image} alt="Logo" style={{ width: '300px', height: 'auto' }} />
       <h1>
-        <span>Hi I'm Abhishek,</span>Welcome to my Portfolio!
+        <span className="splash-effect">Hi, I'm Abhishek</span>
+         <br />
+        <span className="welcome-text">Welcome to my Portfolio!</span>
       </h1>
       <p>
-        "Welcome to my portfolio! I’m an Associate Software Engineer with a strong foundation in Electronics and
+        "I’m an Associate Software Engineer with a strong foundation in Electronics and
         Communication Engineering, blending innovative problem-solving with hands-on expertise in cutting-edge projects
         that bridge hardware and software seamlessly."
       </p>

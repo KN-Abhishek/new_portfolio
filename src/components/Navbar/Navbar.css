@@ -1,17 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 .navbar
 {
 display: flex;
 align-items: center;
 justify-content: space-between;
 margin: 20px 170px;
+font-family: 'Abril Fatface', serif; 
+font-size: 3.5rem;
+color: #ffffff; 
 }
 .nav-menu
 {
     display: flex;
     align-items: center;
     list-style: none;
-    gap: 60px;
-    font-size: 20px;
+    gap: 50px;
+    font-size: 30px;
 }
 .nav-connect
 {
@@ -82,7 +86,7 @@ transform: scale(1.05);
         align-items: start;
         top: 0;
         gap: 30px;
-        background-color: #1f0016;
+        background-color: #0c0c0c;
         width: 350px;
         height: 100%;
         z-index: 2;

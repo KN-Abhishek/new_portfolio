@@ -5,42 +5,30 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 const Footer = () => {
   return (
-    <div className="footer">
-      <div className="footer-top">
-        <div className="footer-top-left">
-          <img src={footer_image} alt="" style={{ width: '150px', height: 'auto' }} />
-          <p>Btech in Electronics And Communication Engineering from NSS College Of Engineering</p>
-        </div>
+    <footer className="footer">
+      <img src={footer_image} alt="Logo" />
+      <p>B.Tech in Electronics and Communication Engineering from NSS College of Engineering</p>
+      <div className="footer-links">
+        <AnchorLink className="anchor-link" offset={50} href="#contact">
+          Connect With Me
+        </AnchorLink>
+        <a
+          href="https://github.com/KN-Abhishek"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+        <a
+          href="https://linkedin.com/in/kn-abhishek"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
       </div>
-      <div className="footer-bottom">
-        <p className="footer-bottom-left">© 2025 KN Abhishek. All rights reserved.</p>
-        <div className="footer-bottom-right">
-          <p>Terms of Service</p>
-          <p>Privacy</p>
-          <p>
-            <AnchorLink className="anchor-link" offset={50} href="#contact">
-              Connect With Me
-            </AnchorLink>
-          </p>
-          <a
-            href="https://github.com/KN-Abhishek"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-link"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://linkedin.com/in/kn-abhishek"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-link"
-          >
-            LinkedIn
-          </a>
-        </div>
-      </div>
-    </div>
+      <p className="footer-bottom">© 2025 KN Abhishek. All rights reserved.</p>
+    </footer>
   );
 };
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
 .hero {
     display: flex;
     align-items: center;
@@ -12,7 +14,14 @@
     height: auto;
 }
 
+.welcome-text {
+    font-family: 'Abril Fatface', serif;
+    font-size: 3.5rem;
+    color: #ffffff;
+}
+
 .hero h1 {
+    font-family: 'Abril Fatface', serif;
     width: 70%;
     font-size: 90px;
     font-weight: 700;
@@ -20,11 +29,27 @@
     line-height: 1.2;
 }
 
-.hero h1 span {
+.hero h1 .splash-effect {
     background: linear-gradient(290deg, #DF8908 10%, #B415FF 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: splash-animation 5s ease-in-out;
+}
+
+@keyframes splash-animation {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .hero p {
@@ -72,7 +97,6 @@
     border-color: #B415FF;
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .hero {
         margin-top: 80px;
