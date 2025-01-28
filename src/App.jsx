@@ -12,13 +12,14 @@ import ProjectPage2 from './components/pages/ProjectPage2';
 import ProjectPage3 from './components/pages/ProjectPage3';
 import ProjectPage4 from './components/pages/ProjectPage4';
 import ProjectPage5 from './components/pages/ProjectPage5';
-import "./App.css"
+import "./App.css";
 
 const App = () => {
   return (
     <Router>
       <Navbar />
       <Routes>
+        
         <Route path="/" element={
           <>
             <Hero />
@@ -29,7 +30,10 @@ const App = () => {
           </>
         } />
 
-       
+        
+        <Route path="/projects" element={<Projects />} />
+
+        
         <Route path="/project1" element={<ProjectPage1 />} />
         <Route path="/project2" element={<ProjectPage2 />} />
         <Route path="/project3" element={<ProjectPage3 />} />

@@ -16,8 +16,8 @@ body {
 }
 
 .project-details {
-  max-width: 800px;
-  background-color: #2f2f3d;
+  max-width: 70%;
+  background-color: #303039;
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
@@ -30,19 +30,16 @@ body {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
 }
 
-.project-details h1 {
-  font-size: 36px;
-  color: #DF8908;
-  text-align: center;
-  margin-bottom: 25px;
-  animation: fadeIn 1s ease-in-out;
-}
 
 .project-details h2 {
-  font-size: 28px;
-  color: #B415FF;
-  margin-top: 20px;
-  margin-bottom: 15px;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(290deg, #DF8908 10%, #B415FF 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
 }
 
 .project-details p {

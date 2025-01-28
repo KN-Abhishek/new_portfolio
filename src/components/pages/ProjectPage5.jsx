@@ -11,7 +11,7 @@ const ProjectPage5 = () => {
     <div id= "project-page" className="project-page">
       <h1 className="fade-in">Automatic Bus Transport System With Three Layer Safety Measures</h1>
       <br/>
-      <div className="project-details fade-in">
+      <div className="project-details">
         <section>
           <h2>Description</h2>
           <p>
@@ -108,7 +108,7 @@ const ProjectPage5 = () => {
       </div>
       <br/>
       <div className="home-link">
-        <Link to="/" className="home-button fade-in">Back to Home</Link>
+      <Link to="/projects" className="home-button">Back to Projects</Link>
       </div>
     </div>
   );

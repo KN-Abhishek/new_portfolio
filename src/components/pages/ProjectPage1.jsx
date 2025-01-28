@@ -8,10 +8,10 @@ const ProjectPage1 = () => {
   }, []);
 
   return (
-    <div id= "project-page" className="project-page">
+    <div id="project-page" className="project-page">
       <h1 className="fade-in">Portfolio Website</h1>
-      <br/>
-      <div className="project-details fade-in">
+      <br />
+      <div className="project-details">
         <section>
           <h2>Description</h2>
           <p>
@@ -40,48 +40,6 @@ const ProjectPage1 = () => {
         </section>
 
         <section>
-          <h2>Principle of Operation</h2>
-          <p>
-            The website dynamically organizes content into sections such as Home, Skills, Projects, and Contact:
-          </p>
-          <ul>
-            <li><strong>Home:</strong> Introductory section with a hero banner and brief overview of professional background.</li>
-            <li><strong>Skills:</strong> Highlights technical expertise, tools, and frameworks used.</li>
-            <li><strong>Projects:</strong> Features individual projects with details, live demos, and source code links.</li>
-            <li><strong>Contact:</strong> Interactive form allowing visitors to get in touch for collaborations or opportunities.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>System Design and Features</h2>
-          <h3>Frontend (React.js)</h3>
-          <ul>
-            <li>React Router handles seamless navigation between sections.</li>
-            <li>State management is achieved using React hooks.</li>
-            <li>Modular components make the code reusable and maintainable.</li>
-          </ul>
-          <h3>Custom CSS</h3>
-          <ul>
-            <li>Flexbox and Grid ensure a clean, adaptable layout.</li>
-            <li>Animations and hover effects enhance the user experience.</li>
-          </ul>
-          <h3>Performance Optimization</h3>
-          <ul>
-            <li>Images are lazy-loaded for faster performance.</li>
-            <li>Code is bundled and minified to reduce load times.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Applications and Benefits</h2>
-          <ul>
-            <li><strong>Personal Branding:</strong> Establishes a professional online presence.</li>
-            <li><strong>Showcase Skills:</strong> Highlights expertise in modern web development technologies.</li>
-            <li><strong>Easy Updates:</strong> Easily add new projects and achievements as my career progresses.</li>
-          </ul>
-        </section>
-
-        <section>
           <h2>Conclusion</h2>
           <p>
             This portfolio website serves as an interactive resume, showcasing my technical skills, projects, and achievements. It’s a powerful tool for personal branding and demonstrates my ability to create modern, responsive, and optimized web applications.
@@ -89,9 +47,9 @@ const ProjectPage1 = () => {
         </section>
       </div>
 
-      <br/>
+      <br />
       <div className="home-link">
-        <Link to="/" className="home-button fade-in">Back to Home</Link>
+        <Link to="/projects" className="home-button">Back to Projects</Link>
       </div>
     </div>
   );

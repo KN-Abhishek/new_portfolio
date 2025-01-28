@@ -42,16 +42,16 @@ const Contact = () => {
       if (!res.ok) {
         const errorData = await res.json();
         console.error('Error response:', errorData);
-        alert('There was an issue submitting the form');
+        alert('There was an issue submitting the form ;(');
         return;
       }
   
       const response = await res.json();
-      alert('Contact form submitted successfully');
+      alert('Contact form submitted successfully, we will get back to you ;)');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('Error:', error);
-      alert('There was an error with the submission. Check the console for details.');
+      alert('There was an error with the submission. Check the console for details. :(');
     }
   };
   
