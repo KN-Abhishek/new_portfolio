@@ -29,16 +29,20 @@ const App = () => {
             <Contact />
           </>
         } />
-
-        
-        <Route path="/projects" element={<Projects />} />
-
-        
-        <Route path="/project1" element={<ProjectPage1 />} />
-        <Route path="/project2" element={<ProjectPage2 />} />
-        <Route path="/project3" element={<ProjectPage3 />} />
-        <Route path="/project4" element={<ProjectPage4 />} />
-        <Route path="/project5" element={<ProjectPage5 />} />
+         
+        <Route path="/projects" element={
+          <>
+            <Hero />   
+            <About />
+            <Education />
+            <Projects />
+           </>
+        } />
+        <Route path="/projects/1" element={<ProjectPage1 />} />
+        <Route path="/projects/2" element={<ProjectPage2 />} />
+        <Route path="/projects/3" element={<ProjectPage3 />} />
+        <Route path="/projects/4" element={<ProjectPage4 />} />
+        <Route path="/projects/5" element={<ProjectPage5 />} />
       </Routes>
       <Footer />
     </Router>

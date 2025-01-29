@@ -1,55 +1,89 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';  
-import './projects.css'; 
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./projects.css";
 
 const ProjectPage1 = () => {
+  const [project, setProject] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    fetch(`http://localhost:8080/api/projects/1`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch project details");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Fetched project data:", data);
+        setProject(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!project) {
+    return <div>Project not found</div>;
+  }
 
   return (
     <div id="project-page" className="project-page">
-      <h1 className="fade-in">Portfolio Website</h1>
+      <h1 className="fade-in">{project.name}</h1>
       <br />
       <div className="project-details">
         <section>
           <h2>Description</h2>
-          <p>
-            This personal portfolio website showcases my skills, projects, and achievements. Built with <strong>React.js</strong>, styled with custom CSS, and fully responsive, the website highlights my expertise in frontend development, UI/UX design, and web performance optimization.
-          </p>
+          <p>{project.description}</p>
         </section>
 
         <section>
           <h2>Technologies</h2>
-          <p>
-            <strong>Frontend:</strong> React.js, CSS, JavaScript<br />
-            <strong>Design:</strong> Figma (for wireframing and design mockups)<br />
-            <strong>Version Control:</strong> Git, GitHub
-          </p>
+          <p>{project.technologies}</p>
         </section>
 
         <section>
           <h2>Features</h2>
-          <ul>
-            <li><strong>Responsive Design:</strong> Optimized for desktop, tablet, and mobile screens.</li>
-            <li><strong>Interactive Elements:</strong> Hover effects, animations, and a user-friendly layout.</li>
-            <li><strong>Dynamic Navigation:</strong> Single-page application powered by React Router.</li>
-            <li><strong>Projects Section:</strong> Detailed view of each project, including live demo links and GitHub repositories.</li>
-            <li><strong>Contact Form:</strong> Integrated form for visitors to reach out easily.</li>
-          </ul>
+          <p>
+            {(project.features )}
+          </p>
+        </section>
+
+        <section>
+          <h2>Applications</h2>
+          <p>{project.applications}</p>
+        </section>
+
+        <section>
+          <h2>Benefits</h2>
+          <p>{project.benefits}</p>
         </section>
 
         <section>
           <h2>Conclusion</h2>
-          <p>
-            This portfolio website serves as an interactive resume, showcasing my technical skills, projects, and achievements. It’s a powerful tool for personal branding and demonstrates my ability to create modern, responsive, and optimized web applications.
-          </p>
+          <p>{project.conclusion}</p>
         </section>
       </div>
 
       <br />
       <div className="home-link">
-        <Link to="/projects" className="home-button">Back to Projects</Link>
+        <Link to="/projects" className="home-button">
+          Back to Projects
+        </Link>
       </div>
     </div>
   );

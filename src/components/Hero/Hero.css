@@ -6,12 +6,16 @@
     flex-direction: column;
     gap: 35px;
     text-align: center;
-    margin-top: 150px; 
+    /* margin-top: 150px;  */
 }
 
 .hero img {
-    width: 300px;
-    height: auto;
+    border-radius: 50%; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+    width: 250px; 
+    height: 250px; 
+    margin-top: 200px;
+    object-fit: cover; 
 }
 
 .welcome-text {
@@ -103,7 +107,7 @@
     }
 
     .hero img {
-        width: 250px; 
+        width: 200px; 
         margin-bottom: 20px;
     }
 
@@ -142,7 +146,7 @@
 
 @media (max-width: 480px) {
     .hero img {
-        width: 200px; 
+        width: 90px; 
     }
 
     .hero h1 {

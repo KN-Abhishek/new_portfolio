@@ -1,22 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Hero.css';
-import profile_image from '../../assets/Profilepic.png';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 const Hero = () => {
+  const [homeData, setHomeData] = useState(null); 
+  const [profileImage, setProfileImage] = useState(null); 
+  useEffect(() => {
+    
+    const fetchHomeData = async () => {
+      try {
+       
+        const response = await fetch('http://localhost:8080/api/home/1'); 
+        const data = await response.json();
+        setHomeData(data);
+
+        
+        const imageResponse = await fetch('http://localhost:8080/api/home/1/image'); 
+        const imageBlob = await imageResponse.blob();
+        setProfileImage(URL.createObjectURL(imageBlob));
+      } catch (error) {
+        console.error('Error fetching home data:', error);
+      }
+    };
+
+    fetchHomeData();
+  }, []);
+
+  if (!homeData) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div id="home" className="hero">
-      <img src={profile_image} alt="Logo" style={{ width: '300px', height: 'auto' }} />
+      
+      {profileImage ? (
+        <img
+          src={profileImage} 
+          alt="Profile"
+          style={{ width: '300px', height: 'auto' }}
+        />
+      ) : (
+        <img
+          src="../../assets/Profilepic.png" 
+          alt="Profile"
+          style={{ width: '300px', height: 'auto' }}
+        />
+      )}
+
       <h1>
         <span className="splash-effect">Hi, I'm Abhishek</span>
-         <br />
+        <br />
         <span className="welcome-text">Welcome to my Portfolio!</span>
       </h1>
-      <p>
-        "I’m an Associate Software Engineer with a strong foundation in Electronics and
-        Communication Engineering, blending innovative problem-solving with hands-on expertise in cutting-edge projects
-        that bridge hardware and software seamlessly."
-      </p>
+      <p>{homeData.description}</p>
       <div className="hero-action">
         <div className="hero-connect">
           <AnchorLink className="anchor-link" offset={50} href="#contact">

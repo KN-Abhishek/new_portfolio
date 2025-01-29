@@ -1,121 +1,121 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
 .education {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 80px;
-  margin: 0;
-  padding: 0 30px;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    margin: 80px 20px; 
+}
+
+.education-title {
+    position: relative;
 }
 
 .education-title h1 {
-  padding: 0px 30px;
-  font-size: 80px;
-  font-weight: 600;
-  text-align: center;
-  font-family: 'Abril Fatface', serif; 
-  font-size: 4.5rem;
-  color: #ffffff; 
+    padding: 0px 30px;
+    font-size: 80px;
+    font-weight: 600;
+    font-family: 'Abril Fatface', serif;
+    font-size: 4.5rem;
+    color: #ffffff;
 }
 
 .education-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center; 
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto; 
 }
 
 .education-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  width: 400px;
-  height: 250px;
-  padding: 20px;
-  border-radius: 10px;
-  border: 2px solid white;
-  transition: 0.4s;
-  cursor: pointer;
+    flex: 1 1 calc(33.33% - 30px); 
+    max-width: 300px; 
+    padding: 40px; 
+    border-radius: 10px;
+    border: 2px solid white;
+    transition: 0.4s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.education-card.senior-secondary {
+    flex: 1 1 calc(66.66% - 30px); 
+    max-width: 600px; 
 }
 
 .education-card:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .education-card h2 {
-  background: linear-gradient(290deg, #DF8908 10%, #B415FF 100%);
-  font-size: 30px;
-  font-weight: 700;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    background: linear-gradient(290deg, #DF8908 10%, #B415FF 100%);
+    font-size: 30px;
+    font-weight: 700;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .education-card p {
-  font-size: 18px;
-  line-height: 1.5;
-  margin-bottom: 10px;
-  text-align: center;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    text-align: left;
 }
 
 .education-row {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
-.education-btech {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 30px;
-}
-
-@media (max-width: 1200px) {
-  .education-title h1 {
-    font-size: 60px;
-  }
-
-  .education-card {
-    width: 220px;
-    height: 200px;
-    padding: 15px;
-  }
-}
 
 @media (max-width: 1024px) {
-  .education-card {
-    flex: 1 1 calc(50% - 20px);
-  }
+    .education-card {
+        flex: 1 1 calc(50% - 20px); 
+    }
+
+    .education-card.senior-secondary {
+        flex: 1 1 calc(100% - 20px); 
+    }
 }
 
 @media (max-width: 768px) {
-  .education-section {
-    gap: 20px;
-  }
+    .education {
+        margin: 80px 10px;
+    }
 
-  .education-card {
-    flex: 1 1 100%;
-    width: auto;
-    height: auto;
-  }
+    .education-card {
+        flex: 1 1 calc(100% - 20px); 
+        padding: 20px;
+    }
+
+    .education-title h1 {
+        font-size: 3rem; 
+    }
 }
 
 @media (max-width: 480px) {
-  .education-title h1 {
-    font-size: 50px;
-  }
+    .education {
+        margin: 40px 10px;
+    }
 
-  .education-card h2 {
-    font-size: 20px;
-  }
+    .education-card {
+        padding: 15px; 
+    }
 
-  .education-card p {
-    font-size: 12px;
-  }
+    .education-title h1 {
+        font-size: 2.5rem; 
+    }
 }

@@ -1,86 +1,166 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
-.navbar
-{
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin: 20px 170px;
-font-family: 'Abril Fatface', serif; 
-font-size: 3.5rem;
-color: #ffffff; 
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Abril Fatface', serif;
+    font-size: 3.5rem;
+    color: #ffffff;
+    position: fixed; /* Keeps navbar fixed */
+    width: 95%;
+    z-index: 10;
+    background-color: #0c0c0c; /* Prevents transparency */
+    padding: 45px 0px; 
+    margin-top: 0px;
+    /* Reduced padding for top and bottom */
+    height: 60px; /* Adjust overall height */
+    margin: 0;
+   
 }
-.nav-menu
-{
+
+.nav-logo {
+    position: absolute;
+    left: 5px;  /* Ensure logo is on the extreme left */
+    top: 5px;    /* Adjusted to move the logo slightly upwards */
+    font-size: 40px;
+}
+
+.nav-menu {
     display: flex;
     align-items: center;
     list-style: none;
     gap: 50px;
     font-size: 30px;
 }
-.nav-connect
-{
+
+.nav-connect {
     padding: 20px 40px;
     border-radius: 50px;
     font-size: 22px;
-    background: linear-gradient(267deg,#DA7C25 0.36%, #B923E1 102.06%);
+    background: linear-gradient(267deg, #DA7C25 0.36%, #B923E1 102.06%);
     cursor: pointer;
     transition: 0.5s;
 }
-.nav-connect:hover
-{
-transform: scale(1.05);
+
+.nav-connect:hover {
+    transform: scale(1.05);
 }
-.nav-menu li
-{
+
+.nav-menu li {
     display: flex;
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
 }
-.nav-menu li img
-{
+
+.nav-menu li img {
     display: flex;
     margin: auto;
 }
-.anchor-link
-{
+
+.anchor-link {
     text-decoration: none;
     color: white;
 }
-.nav-mob-close
-{
+
+.nav-mob-close {
     display: none;
 }
-.nav-mob-open
-{
+
+.nav-mob-open {
     display: none;
 }
-@media(max-width:768px)
-{
-    .navbar
-    {
-        margin: 20px 80px;
+
+@media (max-width: 1024px) {
+    .navbar {
+        margin: 10px 50px;  
+        flex-direction: row;  
+        justify-content: space-between;
     }
-    .nav-connect
-    {
+
+    .nav-logo {
+        font-size: 35px;
+        left: 10px;
+        top: 5px;
+    }
+
+    .nav-connect {
         display: none;
     }
-    .nav-mob-open
-    {
+
+    .nav-mob-open {
         display: block;
         position: fixed;
         right: 30px;
+        top: 10px;  
     }
-    .nav-mob-close
-    {
+
+    .nav-mob-close {
         display: block;
         position: relative;
         width: 30px;
         left: 290px;
-        top: 30px;
+        top: 20px;
     }
-    .nav-menu
-    {
+
+    .nav-menu {
+        position: fixed;
+        flex-direction: column;
+        align-items: start;
+        top: 0;
+        gap: 30px;
+        background-color: #0c0c0c;
+        width: 250px;
+        height: 100%;
+        z-index: 2;
+        transition: right 0.5s;
+        right: -250px;
+    }
+
+    .nav-menu li {
+        font-size: 25px;
+        padding-left: 60px;
+        flex-direction: row;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        margin: 10px 40px; 
+        flex-direction: row;  
+        justify-content: space-between;
+        margin-left: 1500px;
+    }
+
+    .nav-logo {
+      
+        left: 10px;
+        top: 5px;
+        
+    }
+
+    .nav-connect {
+        display: none;
+    }
+
+    .nav-mob-open {
+        display: block;
+        position: fixed;
+        right: 30px;
+        top: 10px;  
+    }
+
+    .nav-mob-close {
+        display: block;
+        position: relative;
+        width: 30px;
+        left: 290px;
+        top: 20px;
+    }
+
+    .nav-menu {
         position: fixed;
         flex-direction: column;
         align-items: start;
@@ -93,8 +173,8 @@ transform: scale(1.05);
         transition: right 0.5s;
         right: -350px;
     }
-    .nav-menu li
-    {
+
+    .nav-menu li {
         font-size: 30px;
         padding-left: 100px;
         flex-direction: row;
