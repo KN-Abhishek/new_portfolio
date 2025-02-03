@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./projects.css";
 
-const ProjectPage1 = () => {
+const ProjectPage2 = () => {
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -89,4 +89,4 @@ const ProjectPage1 = () => {
   );
 };
 
-export default ProjectPage1;
+export default ProjectPage2;

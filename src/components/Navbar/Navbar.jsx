@@ -60,7 +60,7 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="nav-connect">
-        <p onClick={() => handleNavigation('/', 'contact')}>Connect With Me</p>
+        <p onClick={() => handleNavigation('/login')}>LoginPage</p> {/* Navigate to LoginPage */}
       </div>
     </div>
   );

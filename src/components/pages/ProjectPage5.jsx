@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./projects.css";
 
-const ProjectPage3 = () => {
+const ProjectPage5 = () => {
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,7 +10,7 @@ const ProjectPage3 = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    fetch(`http://localhost:8080/api/projects/5`)
+    fetch(`http://localhost:8080/api/projects/8`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch project details");
@@ -89,4 +89,4 @@ const ProjectPage3 = () => {
   );
 };
 
-export default ProjectPage3;
+export default ProjectPage5;

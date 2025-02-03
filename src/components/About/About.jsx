@@ -10,7 +10,7 @@ const About = () => {
     const fetchAboutData = async () => {
       try {
         
-        const response = await fetch('http://localhost:8080/api/about/1'); 
+        const response = await fetch('http://localhost:8080/api/about/6'); 
         const data = await response.json();
         setAboutData(data);
 

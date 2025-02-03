@@ -10,7 +10,7 @@ const ProjectPage3 = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    fetch(`http://localhost:8080/api/projects/3`)
+    fetch(`http://localhost:8080/api/projects/5`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch project details");
