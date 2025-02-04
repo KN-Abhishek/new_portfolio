@@ -7,7 +7,7 @@ const Projects = () => {
 
   useEffect(() => {
     // Fetch projects from the backend
-    fetch('http://localhost:8080/api/parent_projects')
+    fetch('http://localhost:8080/api/projects')
       .then((response) => response.json())
       .then((data) => setProjects(data))
       .catch((error) => console.error('Error fetching projects:', error));
@@ -22,10 +22,7 @@ const Projects = () => {
         <div className="project-row">
           {projects.map((project) => (
             <div className="project-card" key={project.id}>
-              <h2>{project.heading}</h2>
-              <p>
-                <strong>Description:</strong> {project.description}
-              </p>
+              <h2>{project.name}</h2>
               <p>
                 <strong>Technologies:</strong> {project.technologies}
               </p>

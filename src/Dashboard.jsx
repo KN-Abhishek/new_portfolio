@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Dashboard.css';
-import home from './assets/home.png';
-import about from './assets/about.png';
-import education from './assets/education.png';
-import projects from './assets/project.png';
-import user from './assets/user.png';
-import contact from './assets/contact.png';
+import home from './assets/home2.png';
+import about from './assets/about2.png';
+import education from './assets/education2.png';
+import projects from './assets/proj2.png';
+import user from './assets/users2.png';
+import contact from './assets/contact2.png';
 import Logout from './Logout'; // Import Logout Component
+import profilePic from './assets/profilepic1.png'; // Add the profile picture import
 
 const Dashboard = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -52,13 +53,42 @@ const Dashboard = () => {
       <div className="dashboard-content">
         <h2>Welcome to Your Dashboard</h2>
         <div className="content-details">
-          <p>Hello, Welcome To Your Dashboard.</p>
+          <p> Welcome Back</p>
+
+          {/* Profile Picture */}
+          <div className="profile-picture">
+            <img src={profilePic} alt="Profile" className="profile-img" />
+          </div>
+        </div>
+
+        {/* Dashboard Cards Section */}
+        <div className="dashboard-cards">
+          <Link to="/" className="card">
+            <img src={home} alt="Home" className="card-icon" />
+            <h3>Portfolio</h3>
+          </Link>
+          <Link to="/about" className="card">
+            <img src={about} alt="About" className="card-icon" />
+            <h3>About</h3>
+          </Link>
+          <Link to="/education" className="card">
+            <img src={education} alt="Education" className="card-icon" />
+            <h3>Education</h3>
+          </Link>
+          <Link to="/projects" className="card">
+            <img src={projects} alt="Projects" className="card-icon" />
+            <h3>Projects</h3>
+          </Link>
+          <Link to="/contact" className="card">
+            <img src={contact} alt="Contact" className="card-icon" />
+            <h3>Contact</h3>
+          </Link>
+          <Link to="/users" className="card">
+            <img src={user} alt="Users" className="card-icon" />
+            <h3>Users</h3>
+          </Link>
         </div>
       </div>
-
-      <footer className="footer">
-        <p>&copy; 2025 Abhishek Portfolio.</p>
-      </footer>
     </div>
   );
 };

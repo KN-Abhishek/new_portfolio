@@ -1,45 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./projects.css";
 
-const ProjectPage1 = () => {
+const ProjectPage = () => {
+  const { id } = useParams(); // Get project ID from URL
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    fetch(`http://localhost:8080/api/projects/1`)
-      .then((response) => {
+    
+    const fetchProject = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/projects/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch project details");
         }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Fetched project data:", data);
+        const data = await response.json();
         setProject(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
+      } catch (err) {
         setError(err.message);
+      } finally {
         setLoading(false);
-      });
-  }, []);
+      }
+    };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    fetchProject();
+  }, [id]); // Refetch when ID changes
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!project) {
-    return <div>Project not found</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!project) return <div>Project not found</div>;
 
   return (
     <div id="project-page" className="project-page">
@@ -58,9 +50,7 @@ const ProjectPage1 = () => {
 
         <section>
           <h2>Features</h2>
-          <p>
-            {(project.features )}
-          </p>
+          <p>{project.features}</p>
         </section>
 
         <section>
@@ -81,12 +71,12 @@ const ProjectPage1 = () => {
 
       <br />
       <div className="home-link">
-        <Link to="/projects" className="home-button">
-          Back to Projects
+        <Link to="/" className="home-button">
+          Back to Home
         </Link>
       </div>
     </div>
   );
 };
 
-export default ProjectPage1;
+export default ProjectPage;

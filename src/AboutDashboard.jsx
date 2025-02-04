@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './EducationDashboard.css';
-import home from './assets/home.png';
-import about from './assets/about.png';
-import education from './assets/education.png';
-import project from './assets/project.png';
-import user from './assets/user.png';
-import contact from './assets/contact.png';
+import './AboutDashboard.css';
+import home from './assets/home2.png';
+import about from './assets/about2.png';
+import education from './assets/education2.png';
+import project from './assets/proj2.png';
+import user from './assets/users2.png';
+import contact from './assets/contact2.png';
 import Logout from './Logout'; 
 
 const API_URL = "http://localhost:8080/api/about";
@@ -21,6 +21,7 @@ const AboutDashboard = () => {
     profileImage: null
   });
   const [isEditing, setIsEditing] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     fetchAbout();
@@ -96,7 +97,13 @@ const AboutDashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <div className="sidebar">
+      {/* Hamburger Menu */}
+      <button className="hamburger" onClick={() => setSidebarOpen(!sidebarOpen)}>
+        ☰
+      </button>
+
+      {/* Sidebar */}
+      <div className={`sidebar ${sidebarOpen ? "visible" : ""}`}>
         <div className="logo">
           <img src="/LOGO-r.png" alt="Logo" className="logo-img" />
         </div>
@@ -112,6 +119,7 @@ const AboutDashboard = () => {
           <Logout />
         </div>
       </div>
+
       <div className="dashboard-content">
         <h2>About Dashboard</h2>
         <form onSubmit={handleSubmit} className="education-form">

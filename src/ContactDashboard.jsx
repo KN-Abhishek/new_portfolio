@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "./ContactDashboard.css";
-import home from "./assets/home.png";
-import about from "./assets/about.png";
-import education from "./assets/education.png";
-import project from "./assets/project.png";
-import user from "./assets/user.png";
-import contact from "./assets/contact.png";
-import Logout from './Logout'; 
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './ContactDashboard.css';
+import home from './assets/home2.png';
+import about from './assets/about2.png';
+import education from './assets/education2.png';
+import project from './assets/proj2.png';
+import user from './assets/users2.png';
+import contact from './assets/contact2.png';
+import Logout from './Logout';
 
 const API_URL = "http://localhost:8080/api/contact";
 
@@ -17,9 +17,10 @@ const ContactDashboard = () => {
     id: null,
     name: '',
     email: '',
-    message: '',
+    message: ''
   });
   const [isEditing, setIsEditing] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     fetchContacts();
@@ -73,7 +74,13 @@ const ContactDashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <div className="sidebar">
+      {/* Hamburger Menu */}
+      <button className="hamburger" onClick={() => setSidebarOpen(!sidebarOpen)}>
+        ☰
+      </button>
+
+      {/* Sidebar */}
+      <div className={`sidebar ${sidebarOpen ? "visible" : ""}`}>
         <div className="logo">
           <img src="/LOGO-r.png" alt="Logo" className="logo-img" />
         </div>
@@ -89,74 +96,45 @@ const ContactDashboard = () => {
           <Logout />
         </div>
       </div>
+
+      {/* Main Content */}
       <div className="dashboard-content">
-        <h2>Contact Messages</h2>
+        <h2>Contact Dashboard</h2>
 
         {/* Contact Form */}
         <form onSubmit={handleSubmit} className="contact-form">
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-          <button type="submit">
-            {isEditing ? "Update Contact" : "Add Contact"}
-          </button>
+          <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
+          <textarea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} required />
+          <button type="submit">{isEditing ? "Update Contact" : "Add Contact"}</button>
         </form>
 
-        {/* Contact Table */}
-        <table className="contact-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Message</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {contacts.map((contact) => (
-              <tr key={contact.id}>
-                <td>{contact.name}</td>
-                <td>{contact.email}</td>
-                <td>{contact.message}</td>
-                
-                <td>
-                  <button
-                    className="edit-btn"
-                    onClick={() => setFormData(contact)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="delete-btn"
-                    onClick={() => handleDelete(contact.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+        {/* Contact List */}
+        <div className="contacts-table-container">
+          <table className="contacts-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {contacts.map((contact) => (
+                <tr key={contact.id}>
+                  <td>{contact.name}</td>
+                  <td>{contact.email}</td>
+                  <td>{contact.message}</td>
+                  <td>
+                    <button className="edit-btn" onClick={() => handleEdit(contact)}>Edit</button>
+                    <button className="delete-btn" onClick={() => handleDelete(contact.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

@@ -19,11 +19,7 @@ import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Education from './components/Education/Education';
 import Projects from './components/Projects/Projects';
-import ProjectPage1 from './components/pages/ProjectPage1';
-import ProjectPage2 from './components/pages/ProjectPage2';
-import ProjectPage3 from './components/pages/ProjectPage3';
-import ProjectPage4 from './components/pages/ProjectPage4';
-import ProjectPage5 from './components/pages/ProjectPage5';
+import ProjectPage from './components/pages/ProjectPage'; 
 
 import './App.css';
 
@@ -68,11 +64,8 @@ const App = () => {
             <Footer />
           </>
         } />
-        <Route path="/projects/1" element={<ProjectPage1 />} />
-        <Route path="/projects/2" element={<ProjectPage2 />} />
-        <Route path="/projects/5" element={<ProjectPage3 />} />
-        <Route path="/projects/4" element={<ProjectPage4 />} />
-        <Route path="/projects/8" element={<ProjectPage5 />} />
+         
+        <Route path="/projects/:id" element={<ProjectPage />} />
       </Routes>
     </Router>
   );
