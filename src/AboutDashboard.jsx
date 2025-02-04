@@ -99,8 +99,9 @@ const AboutDashboard = () => {
     <div className="dashboard-container">
       {/* Hamburger Menu */}
       <button className="hamburger" onClick={() => setSidebarOpen(!sidebarOpen)}>
-        ☰
+        {sidebarOpen ? '×' : '☰'}
       </button>
+
 
       {/* Sidebar */}
       <div className={`sidebar ${sidebarOpen ? "visible" : ""}`}>

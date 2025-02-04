@@ -1,17 +1,24 @@
 .logout-btn {
-    background-color: #696262;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin: 20px;
-    width: 80%;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  .logout-btn:hover {
-    background-color: #150f0f;
-  }
-  
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent; /* Remove background */
+  border: none;
+  width: 50px; /* Set button size */
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* Make it round */
+  transition: transform 0.2s ease-in-out;
+}
+
+.logout-btn:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.logout-icon {
+  width: 25px; /* Adjust image size */
+  height: 25px;
+}

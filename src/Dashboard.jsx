@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 import home from './assets/home2.png';
+import home1 from './assets/port3.jpg';
 import about from './assets/about2.png';
-import education from './assets/education2.png';
+import education from './assets/ed2.png';
 import projects from './assets/proj2.png';
-import user from './assets/users2.png';
+import user from './assets/user1.png';
 import contact from './assets/contact2.png';
 import Logout from './Logout'; // Import Logout Component
 import profilePic from './assets/profilepic1.png'; // Add the profile picture import
@@ -64,7 +65,7 @@ const Dashboard = () => {
         {/* Dashboard Cards Section */}
         <div className="dashboard-cards">
           <Link to="/" className="card">
-            <img src={home} alt="Home" className="card-icon" />
+            <img src={home1} alt="Home" className="card-icon" />
             <h3>Portfolio</h3>
           </Link>
           <Link to="/about" className="card">

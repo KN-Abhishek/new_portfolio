@@ -19,6 +19,7 @@ const UserDashboard = () => {
     password: "",
   });
   const [isEditing, setIsEditing] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu
 
   useEffect(() => {
     fetchUsers();
@@ -76,10 +77,12 @@ const UserDashboard = () => {
     }
   };
 
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen); // Toggle mobile menu
+
   return (
     <div className="dashboard-container">
       {/* Sidebar */}
-      <div className="sidebar">
+      <div className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="logo">
           <img src="/LOGO-r.png" alt="Logo" className="logo-img" />
         </div>
@@ -94,7 +97,13 @@ const UserDashboard = () => {
         <div className="logout-container">
           <Logout />
         </div>
+        <button className="close-menu" onClick={toggleMobileMenu}>×</button> {/* Close button */}
       </div>
+
+      {/* Hamburger Button */}
+      <button className="hamburger" onClick={toggleMobileMenu}>
+        ☰
+      </button>
 
       {/* Main Content */}
       <div className="dashboard-content">

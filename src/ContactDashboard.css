@@ -281,4 +281,17 @@
     height: 15px;
     margin-right: 10px;
   }
+  @media (max-width: 768px) {
+    .sidebar {
+      left: -200px;
+    }
+  
+    .sidebar.visible {
+      left: 0;
+    }
+  
+    .dashboard-content {
+      padding: 15px;
+    }
+  }
 }

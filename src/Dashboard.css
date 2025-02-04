@@ -12,6 +12,12 @@ body {
   display: flex;
   min-height: 100vh;
 }
+.content-details p {
+  color: #000000;
+
+}
+
+
 
 /* Sidebar (Desktop View) */
 .sidebar {
@@ -22,6 +28,7 @@ body {
   height: 100vh;
   transition: transform 0.3s ease-in-out;
 }
+
 
 .sidebar .logo img {
   width: 100px;
@@ -146,7 +153,10 @@ body {
 .card:hover {
   transform: translateY(-5px);
 }
-
+.card-icon{
+  width: 150px;
+ 
+}
 /* Responsive Cards */
 @media (max-width: 900px) {
   .dashboard-cards {

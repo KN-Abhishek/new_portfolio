@@ -75,12 +75,13 @@ const ContactDashboard = () => {
   return (
     <div className="dashboard-container">
       {/* Hamburger Menu */}
-      <button className="hamburger" onClick={() => setSidebarOpen(!sidebarOpen)}>
+      <button className="hamburger" onClick={() => setSidebarOpen(true)}>
         ☰
       </button>
 
       {/* Sidebar */}
       <div className={`sidebar ${sidebarOpen ? "visible" : ""}`}>
+        <button className="close-btn" onClick={() => setSidebarOpen(false)}>×</button>
         <div className="logo">
           <img src="/LOGO-r.png" alt="Logo" className="logo-img" />
         </div>
@@ -127,7 +128,7 @@ const ContactDashboard = () => {
                   <td>{contact.email}</td>
                   <td>{contact.message}</td>
                   <td>
-                    <button className="edit-btn" onClick={() => handleEdit(contact)}>Edit</button>
+                    <button className="edit-btn" onClick={() => setIsEditing(true) || setFormData(contact)}>Edit</button>
                     <button className="delete-btn" onClick={() => handleDelete(contact.id)}>Delete</button>
                   </td>
                 </tr>

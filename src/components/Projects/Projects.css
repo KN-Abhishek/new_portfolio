@@ -45,7 +45,10 @@
     text-align: left; 
     align-items: flex-start; 
     gap: 10px;
+    justify-content: flex-end;
+
 }
+
 
 .project-row {
     display: flex;

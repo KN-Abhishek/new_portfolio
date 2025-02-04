@@ -22,7 +22,8 @@ const Projects = () => {
         <div className="project-row">
           {projects.map((project) => (
             <div className="project-card" key={project.id}>
-              <h2>{project.name}</h2>
+        <span><h2>{project.name}</h2>
+              </span>
               <p>
                 <strong>Technologies:</strong> {project.technologies}
               </p>

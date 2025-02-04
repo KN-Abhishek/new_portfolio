@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Logout.css'; // Add styling for the button
+import logoutIcon from './assets/log.png';
+import './Logout.css'; // Import styling
 
 const Logout = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Logout = () => {
 
   return (
     <button className="logout-btn" onClick={handleLogout}>
-      Logout
+      <img src={logoutIcon} alt="Logout" className="logout-icon" />
     </button>
   );
 };

@@ -1,7 +1,7 @@
-body {
+/* body {
     background-color: #ff0062;
   }
-  
+   */
   .login-page {
     display: flex;
     flex-direction: column;
@@ -9,6 +9,7 @@ body {
     justify-content: center;
     height: auto;
     height: 100vh;
+    background: linear-gradient(to bottom, #ff0062, #ff8e8e);
     gap: 20px;
   }
   
