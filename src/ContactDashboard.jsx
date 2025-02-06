@@ -8,6 +8,8 @@ import project from './assets/project5.png';
 import user from './assets/user5.png';
 import contact from './assets/contact5.png';
 import Logout from './Logout';
+import SuccessMessage from "./SuccessMessage"; 
+import "./SuccessMessage.css"; 
 
 const API_URL = "http://localhost:8080/api/contact";
 
@@ -21,6 +23,7 @@ const ContactDashboard = () => {
   });
   const [isEditing, setIsEditing] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   useEffect(() => {
     fetchContacts();
@@ -54,6 +57,7 @@ const ContactDashboard = () => {
       });
 
       if (!response.ok) throw new Error("Network response was not ok");
+      setSuccessMessage(isEditing ? "Contact updated successfully!" : "Contact added successfully!");
       setFormData({ id: null, name: '', email: '', message: '' });
       setIsEditing(false);
       fetchContacts();
@@ -66,6 +70,7 @@ const ContactDashboard = () => {
     try {
       const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
       if (!response.ok) throw new Error("Network response was not ok");
+      setSuccessMessage("Contact deleted successfully!");
       fetchContacts();
     } catch (error) {
       console.error("Error deleting contact:", error);
@@ -74,6 +79,7 @@ const ContactDashboard = () => {
 
   return (
     <div className="dashboard-container">
+      {successMessage && <SuccessMessage message={successMessage} onClose={() => setSuccessMessage(null)} />}
       {/* Hamburger Menu */}
       <button className="hamburger" onClick={() => setSidebarOpen(true)}>
         ☰

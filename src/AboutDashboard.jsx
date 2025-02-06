@@ -8,6 +8,8 @@ import project from './assets/project5.png';
 import user from './assets/user5.png';
 import contact from './assets/contact5.png';
 import Logout from './Logout'; 
+import SuccessMessage from "./SuccessMessage"; 
+import "./SuccessMessage.css"; 
 
 const API_URL = "http://localhost:8080/api/about";
 
@@ -22,6 +24,8 @@ const AboutDashboard = () => {
   });
   const [isEditing, setIsEditing] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     fetchAbout();
@@ -46,8 +50,30 @@ const AboutDashboard = () => {
     }
   };
 
+  const validateForm = () => {
+    let errors = {};
+
+    // Validation for required fields
+    if (!formData.description) errors.description = "Description is required";
+    if (!formData.skills) errors.skills = "Skills are required";
+    if (!formData.achievements) errors.achievements = "Achievements are required";
+
+    // Validate the profile image if form is not in editing mode
+    if (!formData.profileImage && !isEditing) {
+      errors.profileImage = "Profile image is required";
+    }
+
+    setErrors(errors);
+
+    return Object.keys(errors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Prevent submission if validation fails
+    if (!validateForm()) return;
+
     try {
       const formDataToSend = new FormData();
       formDataToSend.append("description", formData.description);
@@ -66,6 +92,7 @@ const AboutDashboard = () => {
       });
 
       if (!response.ok) throw new Error("Network response was not ok");
+      setSuccessMessage(isEditing ? "About updated successfully!" : "About added successfully!");
       setFormData({
         id: null,
         description: '',
@@ -89,6 +116,7 @@ const AboutDashboard = () => {
     try {
       const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
       if (!response.ok) throw new Error("Network response was not ok");
+      setSuccessMessage("About deleted successfully!");
       fetchAbout();
     } catch (error) {
       console.error("Error deleting about record:", error);
@@ -97,6 +125,7 @@ const AboutDashboard = () => {
 
   return (
     <div className="dashboard-container">
+      {successMessage && <SuccessMessage message={successMessage} onClose={() => setSuccessMessage(null)} />}
       {/* Hamburger Menu */}
       <button className="hamburger" onClick={() => setSidebarOpen(!sidebarOpen)}>
         {sidebarOpen ? '×' : '☰'}
@@ -123,38 +152,72 @@ const AboutDashboard = () => {
       <div className="dashboard-content">
         <h2>About Dashboard</h2>
         <form onSubmit={handleSubmit} className="education-form">
-          <textarea name="description" placeholder="Description" value={formData.description} onChange={handleChange} required />
-          <textarea name="skills" placeholder="Skills" value={formData.skills} onChange={handleChange} required />
-          <textarea name="achievements" placeholder="Achievements" value={formData.achievements} onChange={handleChange} required />
-          <input type="file" name="profileImage" onChange={handleChange} />
+          <textarea
+            name="description"
+            placeholder="Description"
+            value={formData.description}
+            onChange={handleChange}
+          />
+          {errors.description && <span className="error">{errors.description}</span>}
+          
+          <textarea
+            name="skills"
+            placeholder="Skills"
+            value={formData.skills}
+            onChange={handleChange}
+          />
+          {errors.skills && <span className="error">{errors.skills}</span>}
+          
+          <textarea
+            name="achievements"
+            placeholder="Achievements"
+            value={formData.achievements}
+            onChange={handleChange}
+          />
+          {errors.achievements && <span className="error">{errors.achievements}</span>}
+          
+          <input
+            type="file"
+            name="profileImage"
+            onChange={handleChange}
+          />
+          {errors.profileImage && <span className="error">{errors.profileImage}</span>}
+          
           <button type="submit">{isEditing ? "Update About" : "Add About"}</button>
         </form>
-        <div className="about-table-container"> 
-        <table className="education-table">
-          <thead>
-            <tr>
-              <th>Description</th>
-              <th>Skills</th>
-              <th>Achievements</th>
-              <th>Profile Image</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {aboutList.map((about) => (
-              <tr key={about.id}>
-                <td>{about.description}</td>
-                <td>{about.skills}</td>
-                <td>{about.achievements}</td>
-                <td><img src={`http://localhost:8080/api/about/${about.id}/image`} alt="Profile" width="50" /></td>
-                <td>
-                  <button className="edit-btn" onClick={() => handleEdit(about)}>Edit</button>
-                  <button className="delete-btn" onClick={() => handleDelete(about.id)}>Delete</button>
-                </td>
+
+        <div className="about-table-container">
+          <table className="education-table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Skills</th>
+                <th>Achievements</th>
+                <th>Profile Image</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {aboutList.map((about) => (
+                <tr key={about.id}>
+                  <td>{about.description}</td>
+                  <td>{about.skills}</td>
+                  <td>{about.achievements}</td>
+                  <td>
+                    <img
+                      src={`http://localhost:8080/api/about/${about.id}/image`}
+                      alt="Profile"
+                      width="50"
+                    />
+                  </td>
+                  <td>
+                    <button className="edit-btn" onClick={() => handleEdit(about)}>Edit</button>
+                    <button className="delete-btn" onClick={() => handleDelete(about.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

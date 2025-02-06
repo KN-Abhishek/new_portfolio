@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SuccessMessage from './SuccessMessage';
 import './ProjectsDashboard.css'; 
 import home from './assets/home5.png';
 import about from './assets/about5.png';
@@ -8,6 +9,7 @@ import project from './assets/project5.png';
 import user from './assets/user5.png';
 import contact from './assets/contact5.png';
 import Logout from './Logout'; 
+import "./SuccessMessage.css"; 
 
 const API_URL = "http://localhost:8080/api/projects";
 
@@ -25,6 +27,7 @@ const ProjectsDashboard = () => {
   });
   const [isEditing, setIsEditing] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   useEffect(() => {
     fetchProjects();
@@ -58,6 +61,9 @@ const ProjectsDashboard = () => {
       });
 
       if (!response.ok) throw new Error("Network response was not ok");
+      
+      setSuccessMessage(isEditing ? "Project updated successfully!" : "Project added successfully!");
+      
       setFormData({ id: null, name: '', description: '', technologies: '', features: '', applications: '', benefits: '', conclusion: '' });
       setIsEditing(false);
       fetchProjects();
@@ -75,6 +81,7 @@ const ProjectsDashboard = () => {
     try {
       const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
       if (!response.ok) throw new Error("Network response was not ok");
+      setSuccessMessage("Project deleted successfully!");
       fetchProjects();
     } catch (error) {
       console.error("Error deleting project:", error);
@@ -83,12 +90,10 @@ const ProjectsDashboard = () => {
 
   return (
     <div className="dashboard-container">
-      {/* Hamburger Menu */}
-      <button className="hamburger" onClick={() => setSidebarOpen(!sidebarOpen)}>
-        ☰
-      </button>
-
-      {/* Sidebar */}
+      {successMessage && <SuccessMessage message={successMessage} onClose={() => setSuccessMessage(null)} />}
+      
+      <button className="hamburger" onClick={() => setSidebarOpen(!sidebarOpen)}>☰</button>
+      
       <div className={`sidebar ${sidebarOpen ? "visible" : ""}`}>
         <div className="logo">
           <img src="/LOGO-r.png" alt="Logo" className="logo-img" />
@@ -104,11 +109,9 @@ const ProjectsDashboard = () => {
         <div className="logout-container"><Logout /></div>
       </div>
 
-      {/* Main Content */}
       <div className="dashboard-content">
         <h2>Projects Dashboard</h2>
 
-        {/* Project Form */}
         <form onSubmit={handleSubmit} className="project-form">
           <input type="text" name="name" placeholder="Project Name" value={formData.name} onChange={handleChange} required />
           <textarea name="description" placeholder="Description" value={formData.description} onChange={handleChange} required />
@@ -120,7 +123,6 @@ const ProjectsDashboard = () => {
           <button type="submit">{isEditing ? "Update Project" : "Add Project"}</button>
         </form>
 
-        {/* Project List */}
         <div className="projects-table-container">
           <table className="projects-table">
             <thead>

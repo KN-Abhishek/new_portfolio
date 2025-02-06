@@ -9,7 +9,6 @@
     justify-content: center;
     height: auto;
     height: 100vh;
-    background: linear-gradient(to bottom, #ff0062, #ff8e8e);
     gap: 20px;
   }
   
@@ -29,6 +28,7 @@
   form {
     display: flex;
     flex-direction: column;
+    width: 98%;
   }
 
 

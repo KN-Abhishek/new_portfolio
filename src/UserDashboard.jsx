@@ -8,6 +8,8 @@ import project from "./assets/project5.png";
 import userIcon from "./assets/user5.png";
 import contact from "./assets/contact5.png";
 import Logout from "./Logout";
+import SuccessMessage from "./SuccessMessage";
+import "./SuccessMessage.css";
 
 const API_URL = "http://localhost:8080/api/users";
 
@@ -19,7 +21,12 @@ const UserDashboard = () => {
     password: "",
   });
   const [isEditing, setIsEditing] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(""); // ✅ Success message state
+  const [errorMessage, setErrorMessage] = useState(""); // ✅ Error message state
+
+  // Assuming loggedInUserId is fetched from session or state (for example, from localStorage or Context)
+  const loggedInUserId = JSON.parse(localStorage.getItem('user'))?.id || 1; // Replace with actual logged-in user ID logic
 
   useEffect(() => {
     fetchUsers();
@@ -42,6 +49,16 @@ const UserDashboard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Check if the username already exists
+    const existingUser = users.find(user => user.username === formData.username);
+
+    if (existingUser) {
+      setErrorMessage("User already exists!"); // Show error if username already exists
+      setTimeout(() => setErrorMessage(""), 3000); // Clear the error message after 3 seconds
+      return;
+    }
+
     try {
       const method = isEditing ? "PUT" : "POST";
       const url = isEditing ? `${API_URL}/${formData.id}` : API_URL;
@@ -53,35 +70,45 @@ const UserDashboard = () => {
       });
 
       if (!response.ok) throw new Error("Network response was not ok");
+
+      setSuccessMessage(isEditing ? "User updated successfully!" : "User added successfully!"); 
       setFormData({ id: null, username: "", password: "" });
       setIsEditing(false);
       fetchUsers();
+      
+      setTimeout(() => setSuccessMessage(""), 3000); // Hide success message after 3 sec
     } catch (error) {
       console.error("Error saving user:", error);
     }
   };
 
   const handleEdit = (user) => {
-    setFormData({ id: user.id, username: user.username, password: "" }); // Do not pre-fill password for security
+    setFormData({ id: user.id, username: user.username, password: "" });
     setIsEditing(true);
   };
 
   const handleDelete = async (id) => {
+    // Prevent deleting the logged-in user
+    if (id === loggedInUserId) {
+      setErrorMessage("You cannot delete the currently logged-in user!");
+      setTimeout(() => setErrorMessage(""), 3000); // Hide error after 3 sec
+      return;
+    }
+
     try {
       const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
       if (!response.ok) throw new Error("Network response was not ok");
-
+      setSuccessMessage("User deleted successfully!");
       fetchUsers();
     } catch (error) {
       console.error("Error deleting user:", error);
     }
   };
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen); // Toggle mobile menu
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
     <div className="dashboard-container">
-      {/* Sidebar */}
       <div className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="logo">
           <img src="/LOGO-r.png" alt="Logo" className="logo-img" />
@@ -99,23 +126,25 @@ const UserDashboard = () => {
         </div>
       </div>
 
-      {/* Hamburger Button */}
       <button className="hamburger" onClick={toggleMobileMenu}>
         ☰
       </button>
 
-      {/* Main Content */}
       <div className="dashboard-content">
         <h2>User Management</h2>
 
-        {/* User Form */}
+        {/* ✅ Success Message */}
+        {successMessage && <SuccessMessage message={successMessage} onClose={() => setSuccessMessage("")} />}
+
+        {/* ✅ Error Message */}
+        {errorMessage && <div className="error">{errorMessage}</div>}
+
         <form onSubmit={handleSubmit} className="user-form">
           <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} required />
           <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
           <button type="submit">{isEditing ? "Update User" : "Add User"}</button>
         </form>
 
-        {/* User List */}
         <table className="user-table">
           <thead>
             <tr>

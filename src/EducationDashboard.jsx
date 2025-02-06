@@ -8,6 +8,8 @@ import project from './assets/project5.png';
 import user from './assets/user5.png';
 import contact from './assets/contact5.png';
 import Logout from './Logout'; 
+import SuccessMessage from "./SuccessMessage"; 
+import "./SuccessMessage.css"; 
 
 const API_URL = "http://localhost:8080/api/education";
 
@@ -21,7 +23,8 @@ const EducationDashboard = () => {
     details: ''
   });
   const [isEditing, setIsEditing] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar state
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
+  const [successMessage, setSuccessMessage] = useState(null);
 
   useEffect(() => {
     fetchEducation();
@@ -55,6 +58,7 @@ const EducationDashboard = () => {
       });
 
       if (!response.ok) throw new Error("Network response was not ok");
+      setSuccessMessage(isEditing ? "Education updated successfully!" : "Education added successfully!");
       setFormData({ id: null, degree: '', institution: '', year: '', details: '' });
       setIsEditing(false);
       fetchEducation();
@@ -72,7 +76,7 @@ const EducationDashboard = () => {
     try {
       const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
       if (!response.ok) throw new Error("Network response was not ok");
-  
+      setSuccessMessage("Education deleted successfully!");
       fetchEducation();
     } catch (error) {
       console.error("Error deleting education record:", error);
@@ -81,6 +85,7 @@ const EducationDashboard = () => {
 
   return (
     <div className="dashboard-container">
+       {successMessage && <SuccessMessage message={successMessage} onClose={() => setSuccessMessage(null)} />}
       {/* Hamburger Button */}
       <button className="hamburger" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
         ☰

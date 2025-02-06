@@ -6,6 +6,15 @@ body {
   box-sizing: border-box;
   
 }
+.error {
+  color: rgb(255, 255, 255); /* Bright color to stand out on dark background */
+  font-size: 14px; /* Adjust font size if needed */
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: block;
+  text-align: left;
+  font-weight: bold; /* Make it bold to grab attention */
+}
 
 
 /* Sidebar */
@@ -140,6 +149,7 @@ body {
   flex-direction: column;
   gap: 15px;
   margin-bottom: 30px;
+  width: 98%;
 }
 
 .education-form textarea,
@@ -283,6 +293,7 @@ body {
   font-size: 16px;
   width: 100%;
   resize: vertical;
+  background-color: white;
 }
 
 .education-form textarea {
