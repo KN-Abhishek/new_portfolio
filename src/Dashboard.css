@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: #000000;
 }
 
 /* Dashboard Container */
@@ -14,10 +14,7 @@ body {
 }
 .content-details p {
   color: #000000;
-
 }
-
-
 
 /* Sidebar (Desktop View) */
 .sidebar {
@@ -28,7 +25,6 @@ body {
   height: 100vh;
   transition: transform 0.3s ease-in-out;
 }
-
 
 .sidebar .logo img {
   width: 100px;
@@ -153,19 +149,62 @@ body {
 .card:hover {
   transform: translateY(-5px);
 }
-.card-icon{
+.card-icon {
   width: 150px;
- 
 }
+
 /* Responsive Cards */
 @media (max-width: 900px) {
   .dashboard-cards {
     grid-template-columns: repeat(2, 1fr);
+    width: 94%;
+  }
+  .content-details {
+    margin-left: -80px;
+  }
+  .dashboard-content h2 {
+    margin-left: -80px;
   }
 }
 
 @media (max-width: 600px) {
   .dashboard-cards {
     grid-template-columns: repeat(1, 1fr);
+    margin-left: 130px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .sidebar-menu {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .sidebar-menu li {
+    margin: 10px;
+  }
+
+  .dashboard-content {
+    padding: 20px;
+  }
+
+  .dashboard-cards {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+    margin-left: 0;
   }
 }

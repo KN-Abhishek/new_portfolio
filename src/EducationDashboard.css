@@ -1,35 +1,33 @@
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #f5f7fa;
-}
-
 /* Dashboard Container */
 .dashboard-container {
   display: flex;
-  min-height: 100vh;
-  background-color: #fbfdff;
+  height: 100vh;
   flex-direction: row;
-  transition: all 0.3s ease;
 }
 
-/* Sidebar */
+/* Sidebar Styles */
 .sidebar {
-  width: 220px;
-  background-color: #c6c3c4;
+  width: 200px;
+  background-color: #333;
   color: white;
-  padding: 30px 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1000;
 }
 
-.sidebar.visible {
-  transform: translateX(0);
+.logo {
+  margin-bottom: 30px;
+}
+
+.logo-img {
+  width: 150px;
 }
 
 .sidebar-menu {
@@ -45,175 +43,162 @@ body {
 .sidebar-menu li a {
   display: flex;
   align-items: center;
-  padding: 12px;
-  color: white;
+  padding: 10px;
+  color: #ffffff;
   text-decoration: none;
   font-size: 18px;
   border-radius: 5px;
-  margin-bottom: 15px;
-  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .sidebar-menu li a:hover {
-  background-color: #ff8a99;
+  background-color: #feb8bf;
+  color: #333;
 }
 
 .sidebar-icon {
-  width: 22px;
-  height: 22px;
-  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
 /* Main Content Area */
 .dashboard-content {
   flex-grow: 1;
-  padding: 30px;
-  background-color: white;
-  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  padding: 20px;
+  background-color: #000000;
+  margin-left: 200px;
+  transition: margin-left 0.3s;
+  color: #333;
 }
 
 .dashboard-content h2 {
-  font-size: 30px;
-  color: #f04859;
-  margin-bottom: 30px;
-  text-align: center;
+  margin-bottom: 20px;
+  
 }
 
-/* Form Styles */
-.education-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 30px;
-}
-
-.education-form textarea,
-.education-form input {
-  padding: 12px;
+/* Contact Form Styles */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+  background-color: white;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
-  width: 100%;
-  resize: vertical;
 }
 
-.education-form textarea {
-  min-height: 120px;
-}
-
-.education-form button {
-  padding: 12px;
-  background-color: #f04859;
+.contact-form button {
+  padding: 10px 20px;
+  background-color: #c96672;
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  align-self: flex-start;
+  width: 200px;
 }
 
-.education-form button:hover {
-  background-color: #e73746;
+.contact-form button:hover {
+  background-color: #d43d4b;
 }
 
-/* Table Styles */
-.education-table {
+/* Contact Table Styles */
+.contacts-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 30px;
+  margin-top: 20px;
+  color: #333;
 }
 
-.education-table th,
-.education-table td {
-  padding: 15px;
+.contacts-table th,
+.contacts-table td {
+  padding: 12px;
   text-align: left;
   border: 1px solid #ddd;
+  background-color: white;
 }
 
-.education-table th {
-  background-color: #f04859;
+.contacts-table th {
   color: white;
-  font-size: 18px;
-}
-
-.education-table td {
-  background-color: #f9f9f9;
   font-size: 16px;
 }
 
-.education-table tr:nth-child(even) {
-  background-color: #f3f3f3;
+.contacts-table td {
+  font-size: 14px;
 }
 
-.education-table tr:hover {
+.contacts-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.contacts-table tr:hover {
   background-color: #f1f1f1;
 }
 
-.education-table img {
-  border-radius: 50%;
-  object-fit: cover;
-  width: 50px;
-  height: 50px;
-}
-
 /* Edit and Delete Buttons */
-.edit-btn,
-.delete-btn {
-  padding: 8px 16px;
+.edit-btn {
+  background-color: wheat;
+  color: white;
+  padding: 6px 12px;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  margin-right: 10px;
+  transition: background-color 0.3s;
 }
 
-.edit-btn {
-  background-color: #ffc107;
+.delete-btn {
+  background-color: #dc3545;
   color: white;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 .edit-btn:hover {
   background-color: #e0a800;
 }
 
-.delete-btn {
-  background-color: #dc3545;
-  color: white;
-}
-
 .delete-btn:hover {
   background-color: #c82333;
 }
 
-/* Hamburger Menu */
-.hamburger {
-  font-size: 30px;
-  color: #f04859;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: none; /* Hidden by default */
-}
-
-.hamburger:focus {
-  outline: none;
-}
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .dashboard-container {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
   }
 
   .sidebar {
-    width: 100%;
-    margin-bottom: 20px;
-    position: absolute;
-    left: -220px; /* Initially hidden */
-    top: 0;
+    width: 200px;
+    position: fixed;
     height: 100%;
-    transition: left 0.3s ease;
+  }
+
+  .dashboard-content {
+    margin-left: 200px;
+    padding: 20px;
+  }
+
+  .contact-form button {
+    width: 100%;
+  }
+
+  .contacts-table td,
+  .contacts-table th {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    left: -200px;
+    transition: left 0.3s;
   }
 
   .sidebar.visible {
@@ -221,73 +206,55 @@ body {
   }
 
   .dashboard-content {
-    padding: 20px;
-    width: 90%;
+    margin-left: 0;
+    padding: 10px;
   }
 
-  .education-form button {
-    width: 100%;
-  }
-
-  .education-table th,
-  .education-table td {
-    font-size: 14px;
-  }
-
-  .sidebar-menu li a {
-    font-size: 16px;
-  }
-
-  /* Display hamburger button on small screens */
   .hamburger {
     display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    z-index: 1100;
+    
+  }
+  .education-table-container {
+    overflow-x: auto;
+    width: 91%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+    left: -100%;
   }
 
-  /* Additional styles for smaller screens (430px) */
-  @media (max-width: 430px) {
-    .sidebar {
-      left: -100%; /* Full sidebar hide */
-    }
+  .sidebar.visible {
+    left: 0;
+  }
 
-    .sidebar.visible {
-      left: 0; /* Slide-in from left */
-    }
+  .dashboard-content {
+    padding: 10px;
+  }
 
-    .dashboard-content {
-      padding: 15px;
-      width: 100%;
-    }
-
-    .education-form textarea,
-    .education-form input {
-      font-size: 14px;
-      padding: 8px;
-    }
-
-    .education-table th,
-    .education-table td {
-      font-size: 12px;
-    }
-
-    .sidebar-menu li a {
-      font-size: 14px;
-      padding: 10px;
-    }
-
-    .logo-img {
-      width: 120px; /* Make logo smaller */
-    }
-
-    /* Adjust buttons for small devices */
-    .edit-btn,
-    .delete-btn {
-      font-size: 12px;
-      padding: 6px 12px;
-    }
-
-    /* Adjust the hamburger button */
-    .hamburger {
-      font-size: 24px;
-    }
+  .contacts-table td,
+  .contacts-table th {
+    font-size: 10px;
+    padding: 8px;
+    margin-left: 0px;
+  }
+  .education-form,.education-table {
+    width: 95%;
+  }
+  .education-table-container {
+    overflow-x: auto;
+  }
+  .education-form-button{
+    width: 10px;
   }
 }

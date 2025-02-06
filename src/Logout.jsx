@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import logoutIcon from './assets/log.png';
+import logoutIcon from './assets/logout1.png';
 import './Logout.css'; // Import styling
 
 const Logout = () => {

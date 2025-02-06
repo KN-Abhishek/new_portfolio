@@ -1,7 +1,7 @@
 .logout-btn {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 0px;
+  right: 10px;
   background-color: transparent; /* Remove background */
   border: none;
   width: 50px; /* Set button size */
@@ -21,4 +21,9 @@
 .logout-icon {
   width: 25px; /* Adjust image size */
   height: 25px;
+}
+@media (max-width: 480px) {
+  .logout-btn {
+    top: -19px;
+  }
 }

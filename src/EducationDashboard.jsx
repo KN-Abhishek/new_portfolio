@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './EducationDashboard.css';
-import home from './assets/home2.png';
-import about from './assets/about2.png';
-import education from './assets/education2.png';
-import project from './assets/proj2.png';
-import user from './assets/users2.png';
-import contact from './assets/contact2.png';
+import home from './assets/home5.png';
+import about from './assets/about5.png';
+import education from './assets/graduation.png';
+import project from './assets/project5.png';
+import user from './assets/user5.png';
+import contact from './assets/contact5.png';
 import Logout from './Logout'; 
 
 const API_URL = "http://localhost:8080/api/education";
@@ -21,6 +21,7 @@ const EducationDashboard = () => {
     details: ''
   });
   const [isEditing, setIsEditing] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar state
 
   useEffect(() => {
     fetchEducation();
@@ -68,21 +69,25 @@ const EducationDashboard = () => {
   };
 
   const handleDelete = async (id) => {
-    console.log("Deleting record with ID:", id); // Debug log
     try {
       const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
       if (!response.ok) throw new Error("Network response was not ok");
   
-      fetchEducation(); // Refresh the education list after deletion
+      fetchEducation();
     } catch (error) {
       console.error("Error deleting education record:", error);
     }
   };
-  
 
   return (
     <div className="dashboard-container">
-      <div className="sidebar">
+      {/* Hamburger Button */}
+      <button className="hamburger" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+        ☰
+      </button>
+
+      {/* Sidebar */}
+      <div className={`sidebar ${isSidebarOpen ? "visible" : ""}`}>
         <div className="logo">
           <img src="/LOGO-r.png" alt="Logo" className="logo-img" />
         </div>
@@ -98,6 +103,8 @@ const EducationDashboard = () => {
           <Logout />
         </div>
       </div>
+
+      {/* Main Content */}
       <div className="dashboard-content">
         <h2>Education Dashboard</h2>
         <form onSubmit={handleSubmit} className="education-form">
@@ -105,8 +112,9 @@ const EducationDashboard = () => {
           <input type="text" name="institution" placeholder="Institution" value={formData.institution} onChange={handleChange} required />
           <input type="text" name="year" placeholder="Year" value={formData.year} onChange={handleChange} required />
           <textarea name="details" placeholder="Details" value={formData.details} onChange={handleChange} required />
-          <button type="submit">{isEditing ? "Update Education" : "Add Education"}</button>
+          <button className="education-form-button" type="submit">{isEditing ? "Update Education" : "Add Education"}</button>
         </form>
+        <div className="education-table-container">
         <table className="education-table">
           <thead>
             <tr>
@@ -126,13 +134,13 @@ const EducationDashboard = () => {
                 <td>{education.details}</td>
                 <td>
                   <button className="edit-btn" onClick={() => handleEdit(education)}>Edit</button>
-                  <button className="delete-btn" onClick={() => { console.log(`Deleting education with ID: ${education.id}`); // Debug log
-                            handleDelete(education.id);}}>Delete</button>
+                  <button className="delete-btn" onClick={() => handleDelete(education.id)}>Delete</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
+import kn from './assets/login.png';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -39,6 +40,7 @@ const LoginPage = () => {
   return (
     <div className="login-page">
       <div className="login-container">
+      <img src={kn} alt="KN Logo" className="login-logo" />
         <form onSubmit={handleSubmit}>
           <input
             type="text"

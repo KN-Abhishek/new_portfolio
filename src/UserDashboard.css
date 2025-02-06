@@ -1,30 +1,24 @@
-/* General styles for the dashboard */
+/* Dashboard Container */
 .dashboard-container {
   display: flex;
   height: 100vh;
-  overflow-x: hidden;
-  margin-left: 35px;
-  
+  flex-direction: row;
 }
 
+/* Sidebar Styles */
 .sidebar {
-  width: 250px;
-  background-color: #f04859;
+  width: 160px;
+  background-color:  #000000;
   color: white;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
-  left: -230px;
+  left: 0;
   top: 0;
   height: 100%;
-  transition: left 0.3s ease-in-out;
   z-index: 1000;
-}
-
-.sidebar.open {
-  left: 0;
 }
 
 .logo {
@@ -48,7 +42,8 @@
 .sidebar-menu li a {
   display: flex;
   align-items: center;
-  padding: 12px;
+  padding: 10px;
+  color: white;
   text-decoration: none;
   font-size: 18px;
   border-radius: 5px;
@@ -57,7 +52,7 @@
 }
 
 .sidebar-menu li a:hover {
-  background-color: #feb8bf;
+  background-color: #fcfcfc;
 }
 
 .sidebar-icon {
@@ -70,72 +65,39 @@
 .dashboard-content {
   flex-grow: 1;
   padding: 20px;
-  background-color: #f4f4f4;
-  margin-left: 0;
-  transition: margin-left 0.3s ease-in-out;
-  width: 100%;
-}
-
-.sidebar.open ~ .dashboard-content {
-  margin-left: 290px;
-  width: calc(100% - 290px);
+  background-color: #000000;
+  margin-left: 200px;
+  color: black;
 }
 
 .dashboard-content h2 {
   margin-bottom: 20px;
-  color: #f04859;
+  
 }
-
-/* Form Styles */
 .user-form {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
+  width: 1285px;
 }
 
-.user-form input {
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-.user-form button {
-  padding: 10px;
-  background-color: #f04859;
-  color: white;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  width: 200px;
-}
-
-.user-form button:hover {
-  background-color: #feb8bf;
-}
-
-/* Table Styles */
 .user-table {
-  width: 100%;
+  width: 80%;
+  height: 300px;
   border-collapse: collapse;
-  margin-top: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
+
 
 .user-table th,
 .user-table td {
   padding: 12px;
-  text-align: left;
-  border: 1px solid #ddd;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
 }
 
 .user-table th {
-  background-color: #f04859;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 16px;
-}
-
-.user-table td {
-  background-color: #ffffff;
-  font-size: 14px;
 }
 
 .user-table tr:nth-child(even) {
@@ -146,17 +108,25 @@
   background-color: #f1f1f1;
 }
 
-.user-table td button {
-  padding: 6px 12px;
-  cursor: pointer;
+/* Buttons inside Table */
+.user-table td .edit-btn,
+.user-table td .delete-btn {
+  padding: 6px 14px;
   border: none;
+  cursor: pointer;
   border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .edit-btn {
-  background-color: #ffc107;
+  background-color: wheat;
   color: white;
-  margin-right: 10px;
+  height: 40px;
+}
+
+.edit-btn:hover {
+  background-color: #e0a800;
 }
 
 .delete-btn {
@@ -164,88 +134,165 @@
   color: white;
 }
 
+.delete-btn:hover {
+  background-color: #c82333;
+}
+/* Contact Table Styles */
+.contacts-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.contacts-table th,
+.contacts-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+  color: black;
+}
+
+.contacts-table th {
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+}
+
+.contacts-table td {
+  background-color: #ffffff;
+  font-size: 14px;
+  color: black;
+}
+
+.contacts-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.contacts-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Edit and Delete Buttons */
+.edit-btn {
+  background-color: burlywood;
+  color: rgb(12, 12, 12);
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+
+.delete-btn {
+  background-color: #5f1a38;
+  height: 40px;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
 .edit-btn:hover {
-  background-color: #e0a800;
+  background-color: rgb(213, 213, 213);
 }
 
 .delete-btn:hover {
   background-color: #c82333;
 }
 
-.close-menu {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 30px;
-  position: absolute;
-  bottom: 50px;
-  right: 20px;
-  cursor: pointer;
-}
-
-/* Hamburger Button */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 30px;
-  color: #f04859;
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  cursor: pointer;
-  z-index: 1100;
-}
-
-/* Responsive Styles */
+/* Responsive Design */
 @media (max-width: 1024px) {
-  .dashboard-content {
-      margin-left: 20px;
-      width: 100%;
+  .dashboard-container {
+    flex-direction: row;
   }
 
-  .sidebar.open ~ .dashboard-content {
-      margin-left: 290px;
-      width: calc(100% - 290px);
+  .sidebar {
+    width: 200px;
+    position: fixed;
+    height: 100%;
+  }
+
+  .dashboard-content {
+    margin-left: 200px;
+    padding: 20px;
+  }
+
+  .contacts-table td,
+  .contacts-table th {
+    font-size: 12px;
   }
 }
 
 @media (max-width: 768px) {
-  .hamburger {
-      display: block;
+  .dashboard-container {
+    flex-direction: column;
+    margin-left:-110px;
   }
+  .hamburger {
+    top: 0px;
+    left: -20px;
+  }
+  .education-form {
+    width: 88%;
+  }
+  
 
   .sidebar {
-      width: 40%;
-      left: -60%;
+    width: 200px;
+    position: fixed;
+    left: 0;
+    height: 100%;
   }
-
-  .sidebar.open {
-      left: 0;
+  .user-table {
+    width: 93%;
   }
 
   .dashboard-content {
-      margin-left: 0;
-      width: 90%;
-      margin-top: 15px;
-      padding-top: 60px;
+   
+    width: 80%;
+    margin-right: 40px;
   }
-
-  .sidebar.open ~ .dashboard-content {
-      margin-left: 0;
-      width: 100%;
+  .project-form {
+    width: 93%;
+  }
+  .user-form {
+    width: 93%;
   }
 }
 
-@media (max-width: 500px) {
-  .sidebar {
-      width: 80%;
-      left: -80%;
+@media (max-width: 480px) {
+  .dashboard-content {
+    padding: 10px;
+    margin-left: 40px;
   }
-
-  .sidebar.open {
-      left: 0;
-      width: 40%;
+  .dashboard-content h2 {
+    margin-left: 10px;
   }
-
+  .content-details {
+    margin-left: 10px;
+  }
+  .hamburger {
+    margin-top: 0px;
+    margin-left: -30px;
+    
+  }
+  .contacts-table td,
+  .contacts-table th {
+    font-size: 10px;
+    padding: 8px;
+  }
+  .user-table, .user-form {
+    width: 100%;
+  }
+  .dashboard-container {
+    margin-left: 20px;
+  }
+  .education-form {
+    width: 90%;
+  }
+  .about-table-container {
+    width: 90%;
+  }
 }

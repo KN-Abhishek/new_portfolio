@@ -8,7 +8,7 @@
 /* Sidebar Styles */
 .sidebar {
   width: 200px;
-  background-color: #f04859;
+  background-color:  #c6c3c4;
   color: white;
   padding: 20px;
   display: flex;
@@ -77,13 +77,14 @@
 .dashboard-content {
   flex-grow: 1;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #000000;
   overflow-x: auto;
+  
 }
 
 .dashboard-content h2 {
   margin-bottom: 20px;
-  color: #f04859;
+  
   font-size: 24px;
   text-align: center;
 }
@@ -102,12 +103,12 @@
 
 .project-form button {
   padding: 10px 20px;
-  background-color: #f04859;
+  background-color: #c96672;
   color: white;
   border: none;
   font-size: 16px;
   cursor: pointer;
-  width: 100%;
+  width: 200px;
   border-radius: 5px;
 }
 
@@ -135,9 +136,8 @@
 }
 
 .projects-table th {
-  background-color: #f04859;
-  color: white;
-  font-size: 16px;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
 }
 
 .projects-table tr:nth-child(even) {
@@ -158,7 +158,7 @@
 
 /* Edit and Delete Buttons */
 .edit-btn {
-  background-color: #ffc107;
+  background-color: wheat;
   color: white;
   margin-right: 10px;
   transition: background-color 0.3s;
@@ -191,10 +191,7 @@
     align-items: center;
     padding: 10px 0;
   }
-  .sidebar-menu {
-    display: flex;
-    flex-direction: row;
-  }
+  
   .sidebar-menu li {
     margin-right: 15px;
   }
@@ -223,10 +220,13 @@
   .project-form input,
   .project-form textarea {
     font-size: 14px;
-    padding: 10px;
+    padding: 2px;
   }
   .sidebar-menu {
     flex-direction: column;
     align-items: flex-start;
+  }
+  .projects-table-container {
+    width: 93%;
   }
 }

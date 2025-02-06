@@ -2,13 +2,13 @@
 .dashboard-container {
   display: flex;
   height: 100vh;
-  flex-direction: row; /* Default layout */
+  flex-direction: row;
 }
 
 /* Sidebar Styles */
 .sidebar {
   width: 200px;
-  background-color: #f04859;
+  background-color: #969393;
   color: white;
   padding: 20px;
   display: flex;
@@ -61,12 +61,12 @@
 .dashboard-content {
   flex-grow: 1;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #040404;
 }
 
 .dashboard-content h2 {
   margin-bottom: 20px;
-  color: #f04859;
+  
 }
 
 /* Contact Form Styles */
@@ -76,11 +76,13 @@
   padding: 10px;
   margin-bottom: 10px;
   font-size: 16px;
+  color: black; /* Ensures text is visible */
+  background-color: white;
 }
 
 .contact-form button {
   padding: 10px 20px;
-  background-color: #f04859;
+  background-color: #c96672;
   color: white;
   border: none;
   font-size: 16px;
@@ -104,10 +106,10 @@
   padding: 12px;
   text-align: left;
   border: 1px solid #ddd;
+  color: black; /* Ensures table text is visible */
 }
 
 .contacts-table th {
-  background-color: #f04859;
   color: white;
   font-size: 16px;
 }
@@ -127,7 +129,7 @@
 
 /* Edit and Delete Buttons */
 .edit-btn {
-  background-color: #ffc107;
+  background-color: wheat;
   color: white;
   padding: 6px 12px;
   border: none;
@@ -181,117 +183,42 @@
 }
 
 @media (max-width: 768px) {
-  .dashboard-container {
-    flex-direction: column;
-  }
-
   .sidebar {
-    width: 100%;
-    position: absolute;
-    top: 0;
     left: -200px;
-    z-index: 1000;
-    transition: left 0.3s ease;
   }
 
   .sidebar.visible {
     left: 0;
   }
 
-  .hamburger {
-    display: block;
-    font-size: 30px;
-    background: none;
-    border: none;
-    color: #f04859;
-    cursor: pointer;
-  }
-
   .dashboard-content {
     padding: 15px;
+  } 
+  .contact-form {
+    width: 90%;
   }
-
-  .contact-form button {
-    width: 100%;
+  .contacts-table-container {
+    width: 93%;
   }
-
-  .contacts-table td,
-  .contacts-table th {
-    font-size: 12px;
-  }
-
-  .sidebar-menu li a {
-    font-size: 16px;
-  }
-
-  .sidebar-icon {
-    width: 18px;
-    height: 18px;
-    margin-right: 10px;
-  }
+  
 }
-
-/* Mobile Specific Styles */
-@media (max-width: 480px) {
-  .dashboard-container {
-    flex-direction: column;
+@media (max-width:480px) {
+  .contact-form,.contacts-table{
+    width: 95%;
   }
-
-  .sidebar {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: -200px;
-    z-index: 1000;
-    transition: left 0.3s ease;
-  }
-
-  .sidebar.visible {
-    left: 0;
-  }
-
-  .hamburger {
-    display: block;
-    font-size: 30px;
-    background: none;
-    border: none;
-    color: #f04859;
-    cursor: pointer;
-  }
-
-  .dashboard-content {
-    padding: 15px;
-  }
-
   .contact-form button {
+    width: 200px;
+  }
+  .contacts-table-container {
+    overflow-x: auto;
     width: 100%;
   }
-
-  .contacts-table td,
-  .contacts-table th {
-    font-size: 10px;
+  .edit-btn {
+    width: 100px;
+    height: 100px;
   }
-
-  .sidebar-menu li a {
-    font-size: 14px;
-  }
-
-  .sidebar-icon {
-    width: 15px;
-    height: 15px;
-    margin-right: 10px;
-  }
-  @media (max-width: 768px) {
-    .sidebar {
-      left: -200px;
-    }
-  
-    .sidebar.visible {
-      left: 0;
-    }
-  
-    .dashboard-content {
-      padding: 15px;
-    }
+  .delete-btn {
+    width: 100px;
+    height: 100px;
   }
 }

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './ProjectsDashboard.css'; 
-import home from './assets/home2.png';
-import about from './assets/about2.png';
-import education from './assets/education2.png';
-import project from './assets/proj2.png';
-import user from './assets/users2.png';
-import contact from './assets/contact2.png';
+import home from './assets/home5.png';
+import about from './assets/about5.png';
+import education from './assets/graduation.png';
+import project from './assets/project5.png';
+import user from './assets/user5.png';
+import contact from './assets/contact5.png';
 import Logout from './Logout'; 
 
 const API_URL = "http://localhost:8080/api/projects";
